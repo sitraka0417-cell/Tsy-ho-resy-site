@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tsy ho resy – Application</title>
+<meta name="description" content="Tsy ho resin'ny Fitiavana, boky nosoratan'i Zara Ainga, amin'ny endrika application Android.">
+<meta name="theme-color" content="#9c2f4f">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<meta property="og:title" content="Tsy ho resy – Application">
+<meta property="og:description" content="Vakio ao amin'ny finday ny boky « Tsy ho resin'ny Fitiavana » nosoratan'i Zara Ainga.">
+<meta property="og:image" content="icon.png">
+<style>
+  :root{
+    --bg:#fbf8f4; --surface:#ffffff; --text:#211c1d; --muted:#6d6466;
+    --primary:#9c2f4f; --primary-dark:#6e1f38; --line:rgba(33,28,29,.10);
+    --shadow:0 18px 50px -18px rgba(110,31,56,.45);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#111113; --surface:#1a1a1d; --text:#e9e4e4; --muted:#a39a9c;
+      --primary:#e88fa8; --primary-dark:#c43a60; --line:rgba(233,228,228,.10);
+      --shadow:0 18px 50px -18px rgba(0,0,0,.7);
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.6;
+    min-height:100vh; display:flex; flex-direction:column;
+  }
+  .glow{
+    position:fixed; inset:0 0 auto 0; height:420px; pointer-events:none; z-index:0;
+    background:radial-gradient(60% 100% at 50% 0%, color-mix(in srgb,var(--primary) 22%, transparent), transparent 70%);
+  }
+  main{position:relative; z-index:1; flex:1; width:100%; max-width:560px; margin:0 auto; padding:48px 20px 24px}
+  .hero{text-align:center}
+  .icon{
+    width:128px; height:128px; border-radius:30px; display:block; margin:0 auto 26px;
+    box-shadow:var(--shadow);
+  }
+  h1{font-family:Georgia,"Times New Roman",serif; font-size:clamp(30px,8vw,40px); line-height:1.15; letter-spacing:-.01em}
+  .book{margin-top:10px; font-family:Georgia,serif; font-style:italic; color:var(--primary); font-size:18px}
+  .tag{margin:18px auto 0; max-width:420px; color:var(--muted); font-size:16px}
+  .cta{margin:34px 0 10px}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:12px;
+    width:100%; max-width:380px; padding:17px 26px; border-radius:16px;
+    background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+    color:#fff; font-size:17px; font-weight:700; text-decoration:none;
+    box-shadow:var(--shadow); transition:transform .15s ease, filter .15s ease;
+  }
+  :root .btn{background:linear-gradient(135deg,#9c2f4f,#c43a60)}
+  .btn:hover{transform:translateY(-2px); filter:brightness(1.06)}
+  .btn:active{transform:translateY(0)}
+  .btn svg{width:22px;height:22px;flex:none}
+  .meta{font-size:13px; color:var(--muted)}
+  .card{
+    margin-top:44px; background:var(--surface); border:1px solid var(--line);
+    border-radius:20px; padding:24px 22px;
+  }
+  .card h2{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--primary); margin-bottom:16px}
+  ol{list-style:none; counter-reset:s; display:grid; gap:16px}
+  ol li{counter-increment:s; display:grid; grid-template-columns:34px 1fr; gap:14px; align-items:start; font-size:15.5px}
+  ol li::before{
+    content:counter(s); width:34px; height:34px; border-radius:50%;
+    display:grid; place-items:center; font-weight:700; font-size:15px;
+    color:var(--primary); background:color-mix(in srgb,var(--primary) 12%, transparent);
+  }
+  .note{
+    margin-top:18px; padding:14px 16px; border-radius:14px; font-size:14.5px;
+    background:color-mix(in srgb,var(--primary) 9%, transparent);
+    border:1px solid color-mix(in srgb,var(--primary) 20%, transparent);
+  }
+  .feat{display:grid; gap:12px; margin-top:6px}
+  .feat li{list-style:none; display:flex; gap:12px; align-items:flex-start; font-size:15.5px}
+  .feat li::before{content:"♥"; color:var(--primary); font-size:13px; line-height:1.9}
+  footer{position:relative; z-index:1; text-align:center; padding:26px 20px 34px; color:var(--muted); font-size:13px}
+  footer b{display:block; margin-top:2px; color:var(--text); font-size:15px; letter-spacing:.02em}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<main>
+  <section class="hero">
+    <img class="icon" src="icon.png" alt="Tsy ho resy" width="128" height="128">
+    <h1>Tsy ho resy</h1>
+    <p class="book">Tsy ho resin’ny Fitiavana · Zara Ainga</p>
+    <p class="tag">Vakio ao amin’ny finday ny boky, na aiza na aiza, na tsy misy internet aza.</p>
+
+    <div class="cta">
+      <a class="btn" href="Tsy-ho-resy.apk" download="Tsy-ho-resy.apk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+        Télécharger Tsy ho resy
+      </a>
+    </div>
+    <p class="meta">Ho an’ny finday Android · Fichier APK</p>
+  </section>
+
+  <section class="card">
+    <h2>Endri-javatra</h2>
+    <ul class="feat">
+      <li>Fikarohana teny na paragrafy ao amin’ny boky manontolo</li>
+      <li>Fizahan-takelaka mora sy drawer misy ny toko rehetra</li>
+      <li>Efijery Mazava, Sepia na Maizina ary haben’ny soratra azo hanoina</li>
+      <li>Miverina eo amin’ny toerana novakiana farany</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Fametrahana</h2>
+    <ol>
+      <li><span>Tsindrio ny bokotra <b>Télécharger</b> etsy ambony.</span></li>
+      <li><span>Sokafy ny fichier <b>Tsy-ho-resy.apk</b> voaray, ary avelao ny fametrahana avy amin’ity loharano ity raha mangataka ny finday.</span></li>
+      <li><span>Sokafy ny application ary ampidiro ny <b>PIN</b> azonao.</span></li>
+    </ol>
+    <p class="note">Mila fifandraisana internet ny fampidirana ny PIN voalohany ihany. Aorian’izay dia tsy mila internet intsony. Ny PIN iray dia ho an’ny finday iray ihany. Raha tsy mbola manana PIN ianao, mifandraisa amin’ny mpikarakara ny application.</p>
+  </section>
+</main>
+<footer>
+  Application noforonin’i
+  <b>Sitraka Nambinintsoa</b>
+</footer>
+</body>
+</html>
